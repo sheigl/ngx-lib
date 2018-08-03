@@ -1,0 +1,69 @@
+﻿@import '../../../styles.scss';
+
+.alert {
+    border-radius: $radius;
+    border: none;
+    padding: 0;
+    background-color: $linkcolor;
+    overflow: hidden;
+
+    .icon-container {
+        animation: pulse ease-in-out 5s infinite;
+        color: $lighttext;
+        padding: 15px 25px;
+        font-size: 1.3em;
+
+        &.loading {
+            animation: pulse-load ease-in-out 5s infinite;
+        }
+    }
+
+    .message-container {
+        margin-left: 25px;
+        font-weight: 900;
+        color: $darktext;
+        text-transform: uppercase;
+    }
+
+    &.alert-danger {
+        .message-container {
+            color: $lighttext;
+        }
+    }
+
+    &.alert-loading {
+        background-color: $secondary-color;
+
+        .message-container {
+            color: $lighttext;
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background-color: material-color('red', '900');
+    }
+
+    50% {
+        background-color: material-color('red', '500');
+    }
+
+    100% {
+        background-color: material-color('red', '900');
+    }
+}
+
+@keyframes pulse-load {
+    0% {
+        background-color: material-color('blue', '900');
+    }
+
+    50% {
+        background-color: material-color('blue', '500');
+    }
+
+    100% {
+        background-color: material-color('blue', '900');
+    }
+}

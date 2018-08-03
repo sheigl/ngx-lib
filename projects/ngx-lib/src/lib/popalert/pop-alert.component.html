@@ -1,0 +1,48 @@
+<div #popBackground class="pop-background d-flex justify-content-center" [ngClass]="{
+        'showBackground': opts?.showBackground,
+        'noBackground': !opts?.showBackground,
+        'justify-content-center': !opts?.position || opts?.position !== 'top-right',
+        'justify-content-end': opts?.position === 'top-right'
+     }" [@fadeInOut] (@fadeInOut.start)="animationStarted($event)"
+        (@fadeInOut.done)="animationDone($event)" (click)="onBackgroundClick()" *ngIf="opts?.showAlert" [class.isError]="opts?.isError">
+    <div class="pop-container animated fadeIn {{ opts?.position }}" #popContainer [ngClass]="{
+            'align-self-center': !opts?.position || opts?.position === 'center',
+            'align-self-start': opts?.position === 'top' || opts?.position === 'top-right'
+         }">
+        <div class="pop-alert animated d-flex flex-column">
+            <div *ngIf="opts?.showHeader" class="header d-flex align-items-center" [class.isError]="opts?.isError">
+                <div class="mr-auto">
+                    {{ opts?.headerText }}
+                </div>
+                <ng-template [ngIf]="!opts?.isModal">
+                    <ng-template [ngIf]="!opts?.isError" [ngIfElse]="error">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                        </svg>
+                    </ng-template>
+                    <ng-template #error>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                            <circle class="path circle" fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                            <line class="path line" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                            <line class="path line" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                        </svg>
+                    </ng-template> 
+                </ng-template>                              
+            </div>
+            <div *ngIf="opts?.subHeaderText" class="subHeader" [class.isError]="opts?.isError">
+                {{ opts?.subHeaderText }}
+            </div>
+            <div *ngIf="opts?.showBody" class="body mb-auto">
+                <ng-container *ngTemplateOutlet="(opts?.template || defaultTemplate); context: getContext()"></ng-container>
+            </div>
+            <div *ngIf="opts?.showFooter" class="footer">
+                <a *ngIf="opts?.showCancelButton" href="javascript:void(0)" class="btn btn-warning" (click)="onCancelButtonClick()" [innerHTML]="opts?.cancelButtonText"></a>
+                <a href="javascript:void(0)" class="btn btn-primary" (click)="onOkButtonClick()" [innerHTML]="opts?.okButtonText"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #defaultTemplate let-item="ctx">
+    <div [innerHTML]="opts?.bodyText"></div>
+</ng-template>

@@ -1,0 +1,29 @@
+<div class="d-flex">
+    <div *ngIf="orderBys" class="ml-auto">
+        <label class="page-label">Order By:</label>
+        <select [(ngModel)]="orderBy" (ngModelChange)="onOrderByChange()">
+            <option *ngFor="let o of orderBys" [ngValue]="o">{{ o.name }} {{ o.direction }}</option>
+        </select>
+    </div>
+</div>
+
+<div class="alert alert-{{ alertType }}" *ngIf="(!items || items.length === 0) && (alertType ? true : false)">
+    <div class="d-flex align-items-center">
+        <div class="icon-container" [ngClass]="{ 'loading': alertType === 'loading' }">
+            <span *ngIf="alertType !== 'loading'" ><i class="fas fa-exclamation"></i></span>
+            <span *ngIf="alertType === 'loading'"><i class="fas fa-circle-notch fa-spin"></i></span>            
+        </div>
+        <div class="message-container" *ngIf="alertType !== 'loading'">
+            There are no items!
+        </div>
+        <div class="message-container" *ngIf="alertType === 'loading'">
+            Loading
+        </div>
+    </div>
+</div>
+
+<div *ngIf="items && items.length > 0" #itemContainer>
+    <ng-container *ngFor="let item of visibleItems; let i = index; trackBy: trackByFn">
+        <ng-container *ngTemplateOutlet="opts?.template; context: { ctx: item, index: i }"></ng-container>
+    </ng-container>
+</div>

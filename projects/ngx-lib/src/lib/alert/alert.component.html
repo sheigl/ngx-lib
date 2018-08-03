@@ -1,0 +1,11 @@
+﻿<div class="alert alert-{{ alertType }}">
+    <div class="d-flex align-items-center">
+        <div class="icon-container" [ngClass]="{ 'loading': alertType === 'loading' }">
+            <i *ngIf="alertType === 'danger'" class="fas fa-exclamation"></i>
+            <i *ngIf="alertType === 'loading'" class="fas fa-circle-notch fa-spin"></i>
+        </div>
+        <div class="message-container">
+            {{ message }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import './vars.scss';
+
+
+body {
+    background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif;
+    color: $darktext;
+
+    &.dashboard {
+        background-color: #000;
+
+        .site-container {
+            .component {
+                &.outlet {
+                    background-color: rgba(0,0,0,0);
+                    box-shadow: none;
+                }
+            }
+        }
+
+        .c3 line, .c3 path {
+            fill: none;
+            stroke: grey;
+        }
+
+        .c3 text {
+            fill: grey
+        }
+    }
+}
+
+.blur {
+    filter: blur(10px)
+}
+
+a {
+    transition: color $transition;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.min-width-250 {
+    min-width: 250px;
+}
+
+.site-container {
+    .component {
+        padding: 10px;
+        margin: 10px;
+        &.sidebar {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+        &.outlet {
+            transition: background .5s ease;            
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:100;
+}
+
+.inverse {
+    &.color {
+        color: $lighttext;
+    }
+
+    hr {
+        border-top-color: fade_out($lighttext, .50);
+    }
+
+    .btn {
+        color: $lighttext;
+    }
+}
+
+.alert {
+    &.alert-danger {
+        background-color: darken(#D50000, 5);
+        color: $lighttext;
+        border: 1px solid darken(#D50000, 10);
+    }
+
+    &.alert-success {
+        background-color: darken(#5cb85c, 5);
+        color: $lighttext;
+        border: 1px solid darken(#5cb85c, 10);
+    }
+}
+
+/**
+    table utils
+*/
+
+.id-col {
+    width: 200px;
+}
+
+.table-hover tbody tr {
+    transition: background-color $transition;
+
+    &:nth-child(even) {
+        background-color: $rowcolor;
+    }
+
+    &:hover {
+        background-color: $primary-color;
+        color: $hovercolor;
+    }
+}
+
+.is-sticky {
+    z-index: 99999;
+}
+
+.community-table {
+
+    .header, .body {
+        font-size: .8em;
+    }
+
+    .header {
+        font-weight: bold;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #cecece;
+    }
+
+    .body {
+        border-radius: 3px;
+        margin-bottom: 3px;
+
+        &.status-danger {
+            color: #B71C1C;
+        }
+
+        &:hover {
+            background-color: $primary-color !important;
+            color: $lighttext !important;
+        }
+
+        &.link {
+            cursor: pointer;
+        }
+    }
+
+    &.alt {
+        .row.body:nth-child(even) {
+            background-color: lighten($primary-color, 85);
+        }
+    }
+}
+
+/**
+    Utilities
+*/
+.col-w-300 {
+    width: 300px;
+}
+.col-w-250 {
+    width: 250px;
+}
+.col-w-200 {
+    width: 200px;
+}
+.col-w-150 {
+    width: 150px;
+}
+.col-w-100 {
+    width: 100px;
+}
+.col-w-50 {
+    width: 50px;
+}
+
+
+.form-control {
+    padding: 0px 5px;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(1.65rem + 1px);
+}
+
+/**
+    lazy
+*/
+
+.lazy {
+    &.show {
+        display: initial;
+    }
+    &.hide {
+        display: none!important;
+    }
+}
+
+/**
+    animations
+*/
+
+.spin {
+    display: block;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

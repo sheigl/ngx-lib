@@ -1,0 +1,45 @@
+<div class="d-flex" *ngIf="items && items.length > 0">
+    <div class="page-numbers mr-auto">
+        <a href="javascript:void(0)" *ngFor="let page of getPages()" [ngClass]="{ 'current-page': currentPage === page }" (click)="onPageClick(page)">{{ page }}</a>
+    </div>
+    <div *ngIf="orderBys" class="mr-2">
+        <label class="page-label">Order By:</label>
+        <select [(ngModel)]="orderBy" (ngModelChange)="onOrderByChange()">
+            <option *ngFor="let o of orderBys" [ngValue]="o">{{ o.name }} {{ o.direction }}</option>
+        </select>
+    </div>
+    <div>
+        <label class="page-label">Page Size:</label>
+        <select [(ngModel)]="pagesize" (ngModelChange)="onPageSizeChange()">
+            <option *ngFor="let page of pageSizes" [ngValue]="page">{{ page }}</option>
+        </select>
+    </div>
+</div>
+
+<div app-alert alertType="danger" message="There are no items!" *ngIf="!items || items.length === 0"></div>
+
+<div *ngIf="items && items.length > 0" #itemContainer>
+    <hr />
+    <ng-container *ngTemplateOutlet="template; context: getContext()"></ng-container>
+    <hr />
+</div>
+
+
+
+<div class="d-flex" *ngIf="items && items.length > 0">
+    <div class="page-numbers mr-auto">
+        <a href="javascript:void(0)" *ngFor="let page of getPages()" [ngClass]="{ 'current-page': currentPage === page }" (click)="onPageClick(page)">{{ page }}</a>
+    </div>
+    <div *ngIf="orderBys" class="mr-2">
+        <label class="page-label">Order By:</label>
+        <select [(ngModel)]="orderBy" (ngModelChange)="onOrderByChange()">
+            <option *ngFor="let o of orderBys" [ngValue]="o">{{ o.name }} {{ o.direction }}</option>
+        </select>
+    </div>
+    <div>
+        <label class="page-label">Page Size:</label>
+        <select [(ngModel)]="pagesize" (ngModelChange)="onPageSizeChange()">
+            <option *ngFor="let page of pageSizes" [ngValue]="page">{{ page }}</option>
+        </select>
+    </div>
+</div>

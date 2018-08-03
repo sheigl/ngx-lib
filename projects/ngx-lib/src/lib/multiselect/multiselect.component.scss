@@ -1,0 +1,72 @@
+﻿@import '../../../vars.scss';
+
+.select-container {
+    height: 25px;
+    position: relative;
+
+    .item-container {
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 99;
+    }
+
+    .filter {
+        border: 1px solid lighten($primary-color, 35);
+        border-radius: 3px;
+        padding: 5px;
+        font-size: .9em;
+        width: 100%;
+    }
+}
+
+.item {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;    
+    cursor: pointer;
+    &:hover, &.selected {
+        background-color: $primary-dark;
+        color: #f7f7f7;
+    }
+}
+
+.selected-item {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    background-color: $primary-dark;
+    color: #f7f7f7;
+    position: relative;
+    transition: margin .5s ease;
+
+    &.new {
+        cursor: pointer;
+    }
+
+    .remove {
+        color: material-color('red', '500');
+        position: absolute;
+        top: 0;
+        right: -20px;
+        opacity: 0;
+        transition: opacity .5s ease;
+    }
+
+    &:not(.new):hover {
+        margin-right: 35px;
+
+        .remove {
+            opacity: 1;
+        }
+    }
+}

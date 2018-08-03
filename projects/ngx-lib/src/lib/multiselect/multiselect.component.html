@@ -1,0 +1,20 @@
+﻿<div class="select-container form-control" (click)="onSelectContainerClick($event)" #selectContainer>
+    <div class="float-right"><i class="fas fa-angle-{{ open ? 'up' : 'down' }}"></i></div>    
+    <div class="item-container d-flex align-items-start flex-wrap" *ngIf="open">
+        <input type="text" [(ngModel)]="filter" class="filter" *ngIf="open" placeholder="search..." (keyup)="onFilterKeyUp()" />
+        <div *ngFor="let item of muliselectItems" class="item" [ngClass]="{ 'selected': item.selected }" (click)="onItemSelect(item)">
+            <ng-template [ngTemplateOutlet]="tempRef" [ngTemplateOutletContext]="{ $implicit: item }"></ng-template>
+        </div>
+    </div>
+</div>
+<div class="selected-container">
+    <div class="item-container d-flex align-items-start flex-wrap">
+        <div *ngIf="opts.showNewButton" class="selected-item d-flex align-items-center new" (click)="onNew.emit()">
+            <b><i class="fas fa-plus"></i></b>
+        </div>
+        <div *ngFor="let item of getSelectedItems()" class="selected-item">
+            <div class="remove" (click)="onItemRemove(item)"><i class="fas fa-times-circle"></i></div>
+            <ng-template [ngTemplateOutlet]="selectedTempRef" [ngTemplateOutletContext]="{ $implicit: item }"></ng-template>
+        </div>
+    </div>
+</div>

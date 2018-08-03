@@ -1,0 +1,22 @@
+@import '../../../vars.scss';
+
+.page-numbers {
+    a {
+        display: inline-block;
+        color: $lighttext;
+        background-color: $primary-color;
+        padding: 5px 10px;
+        margin-right: 5px;
+        border-radius: $radius;
+
+        &.current-page {
+            background-color: $secondary-color;
+        }
+    }
+
+    margin-top: 10px;
+}
+
+.page-label {
+    font-size: .8em;
+}

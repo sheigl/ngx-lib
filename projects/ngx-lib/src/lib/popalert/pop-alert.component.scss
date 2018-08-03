@@ -1,0 +1,134 @@
+@import '../../../styles.scss';
+.pop-background {
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    min-height: 100%;
+
+    &.showBackground {
+        background-color: fade_out($primary-dark, .05);
+    }
+
+    &.isError {
+        background-color: fade_out($tert-color-dark, .05);
+    }
+
+    &.noBackground {
+        .pop-container {
+            box-shadow: 0px 0px 50px rgba(0,0,0,.50);
+        }
+    }
+
+    .pop-container {
+        &.top, &.top-right {
+            margin-top: 50px;
+        }
+
+        &.top-right {
+            margin-right: 50px;
+        }
+
+        .pop-alert {
+            min-width: 500px;
+            border-radius: $radius;
+            overflow: hidden;
+
+            .header, .body {
+                text-align: left;
+            }
+
+            .header, .body, .footer, .subHeader {
+                padding: 25px;
+                width: 100%;
+            }
+
+            .header {
+                font-weight: 500;
+                font-size: 2em;
+                background-color: $primary-color;
+                color: $lighttext;
+
+                &.isError {
+                    background-color: material-color('red', '600');
+                }
+
+                svg {
+                    width: 50px;
+                }
+
+                .path {
+                    stroke-dasharray: 1000;
+                    stroke-dashoffset: 0;
+
+                    &.circle {
+                        stroke-dashoffset: -1000;
+                        animation: dash 2s ease-in-out forwards;
+                    }
+
+                    &.line {
+                        stroke-dashoffset: 1000;
+                        animation: dash 2s .35s ease-in-out forwards;
+                    }
+
+                    &.check {
+                        stroke-dashoffset: -100;
+                        animation: dash-check 2s .35s ease-in-out forwards;
+                    }
+                }
+            }
+
+            .subHeader {
+                background-color: $secondary-color;
+                color: $lighttext;
+                text-align: left;
+                padding-top: 5px;
+                padding-bottom: 5px;
+
+                &.isError {
+                    background-color: material-color('red', '800');
+                }
+            }
+
+            .body {
+                background-color: $lighttext;
+                min-height: 100px;
+            }
+
+            .footer {
+                text-align: right;
+                background-color: lighten(#ddd, 5);
+                padding: 10px;
+
+                a:first-child {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+@keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+
+    100% {
+        stroke-dashoffset: 900;
+    }
+}

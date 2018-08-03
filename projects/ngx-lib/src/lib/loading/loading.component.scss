@@ -1,0 +1,86 @@
+@import '../../../styles.scss';
+.LoadingNotification {
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    min-height: 100%;
+    background-color: fade_out($primary-dark, .05);
+}
+
+.LoadingNotification-anim {
+    height: 160px;
+    overflow: visible;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    transform: translateX(-50%) translateY(-50%);
+    zoom: 2;
+    -moz-transform: scale(1.8);
+    display: block;
+}
+
+.LoadingNotification-anim .circular {
+    height: 160px;
+    position: relative;
+    width: 160px;
+    animation: loadingrotate 2s linear infinite;
+}
+
+.LoadingNotification-anim .path {
+    stroke-dasharray: 1, 100;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+.LoadingNotification-anim .path {
+    animation: loadingdash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+}
+
+
+@keyframes color {
+    0%, 100% {
+        stroke: #00be96;
+    }
+
+    40% {
+        stroke: #e64b41;
+    }
+
+    66% {
+        stroke: #46b9b9;
+    }
+
+    80%, 90% {
+        stroke: #ffbe00;
+    }
+}
+
+
+@keyframes loadingrotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes loadingdash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124;
+    }
+}

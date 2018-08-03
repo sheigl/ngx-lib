@@ -1,0 +1,13 @@
+{
+  "name": "ngx-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "animate.css": "^3.5.2",
+    "bootstrap": "^4.0.0-beta.3",
+    "jquery": "^3.2.1",
+    "moment": "^2.20.1",
+    "popper.js": "^1.12.9"
+  }
+}

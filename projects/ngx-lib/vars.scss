@@ -1,0 +1,18 @@
+﻿$primary-color: #01579B;
+$primary-light: lighten($primary-color, 40);
+$primary-dark: darken($primary-color, 20);
+$secondary-color: #00b3b3;
+$tert-color: #C62828;
+$tert-color-dark: darken($tert-color, 40);
+$transition: .08s ease;
+$transition-slow: .8s ease;
+$lighttext: #f7f7f7;
+$darktext: #333;
+$radius: 3px;
+$nav-border-bottom: 2px;
+$linkcolor: #EEEEEE;
+$hovercolor: #FFC107;
+$hovercolorlight: #FFE082;
+$rowcolor: fade_out($primary-color, .90);
+$danger: #FF3D00;
+$success: #28a745;
