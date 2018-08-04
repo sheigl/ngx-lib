@@ -57,6 +57,7 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
     cacheOrderByKey: string = window.location.origin + window.location.pathname + 'orderBy';
     visibleItems: any[] = [];
     destroyed: boolean = false;
+    hasOrdered: boolean = false;
     constructor(
         private cd: ChangeDetectorRef,
         private zone: NgZone,
@@ -161,7 +162,8 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
         if (this.items && this.items.length > 0 && this.visibleItems.length <= this.items.length) {            
             let offset = this.visibleItems.length === 0 ? 0 : this.visibleItems.length;
 
-            if (this.orderBy) {
+            if (this.orderBy && !this.hasOrdered) {
+                this.hasOrdered = true;
                 this._items = this._items.sort((a, b) => {
                     if (this.orderBy.key in a && this.orderBy.key in b) {
                         if (a[this.orderBy.key] === null) {
@@ -183,11 +185,15 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
                 });
             }
 
-            this.visibleItems = this.visibleItems.concat(this.items.slice(offset, numberAtOnce + offset));
+            for (var i = offset; i < this._items.length && i < numberAtOnce + offset; i++) {
+                let item = this._items[i];
+                this.visibleItems.push(item);
+            }
         }
     }
 
     onOrderByChange() {
+        this.hasOrdered = false;
         this.visibleItems = [];
         this.updateItems(this.getNumberOfItemsToDisplay());
         localStorage.setItem(this.cacheOrderByKey, JSON.stringify(this.orderBy));
