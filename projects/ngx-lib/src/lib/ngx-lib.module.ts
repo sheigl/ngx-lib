@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+/*import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -43,3 +43,4 @@ import { ToolTipDirective } from './tool-tip/tool-tip.directive';
   ]
 })
 export class NgxLibModule { }
+*/
