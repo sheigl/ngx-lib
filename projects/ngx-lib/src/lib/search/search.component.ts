@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
     @Input() searching: boolean = false;
     @Input() placeholder: string = 'search communities...';
     @Output() searchingChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @ViewChild('searchRef') searchRef: ElementRef;
+    @ViewChild('searchRef', { static: true }) searchRef: ElementRef;
     constructor(
         private router: ActivatedRoute
     ) { }

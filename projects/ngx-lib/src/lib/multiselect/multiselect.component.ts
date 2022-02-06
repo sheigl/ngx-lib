@@ -22,9 +22,9 @@ export class MultiSelectComponent implements OnInit, OnDestroy {
     }
 
     @Input() key: string = '';
-    @ContentChild('itemDisplay') tempRef;
-    @ContentChild('selectedItemDisplay') selectedTempRef;
-    @ViewChild('selectContainer') selectRef: ElementRef;
+    @ContentChild('itemDisplay', /* TODO: add static flag */ {}) tempRef;
+    @ContentChild('selectedItemDisplay', /* TODO: add static flag */ {}) selectedTempRef;
+    @ViewChild('selectContainer', { static: true }) selectRef: ElementRef;
     @Output() onNew: EventEmitter<void> = new EventEmitter<void>();
     @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
     @Output() onDeselect: EventEmitter<any> = new EventEmitter<any>();

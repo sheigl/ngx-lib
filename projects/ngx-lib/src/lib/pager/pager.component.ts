@@ -48,7 +48,7 @@ export class PagerComponent implements OnInit, OnDestroy {
 
     cachePageSizeKey: string = window.location.origin + window.location.pathname + 'pageSize';
     cacheOrderByKey: string = window.location.origin + window.location.pathname + 'orderBy';
-    @ViewChild('itemContainer') itemContainer: ElementRef;
+    @ViewChild('itemContainer', { static: false }) itemContainer: ElementRef;
     //onWindowScroll: Observable;
 
     private ngUnsubscribe: Subject<void> = new Subject<void>();
