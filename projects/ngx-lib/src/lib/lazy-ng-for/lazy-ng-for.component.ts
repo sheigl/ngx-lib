@@ -48,7 +48,7 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
     }
     private _itemContainer;
     get itemContainer() { return this._itemContainer }
-    @ViewChild('itemContainer', { static: false }) set itemContainer(value: ElementRef) {
+    @ViewChild('itemContainer') set itemContainer(value: ElementRef) {
         if (value) {
             this._itemContainer = value;
             this.initScroll();
