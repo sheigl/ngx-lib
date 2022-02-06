@@ -21,6 +21,7 @@ export class PopAlertService implements OnDestroy {
     get onOpen() { return this.onOpen$; }
 
     isOpen: boolean = false;
+    current: PopAlertOptions;
 
     constructor(
     ) {        
@@ -47,6 +48,7 @@ export class PopAlertService implements OnDestroy {
         this.controlSub$.complete();
         this.onClose$.complete();
     }
+
     error(msg?: string) {
         console.error(msg);
         let opts = <PopAlertOptions>{
@@ -61,6 +63,7 @@ export class PopAlertService implements OnDestroy {
 
         this.show(opts);
     }
+
     show(opts?: PopAlertOptions) {
         if (!opts) {
             opts = new PopAlertOptions();
@@ -91,6 +94,7 @@ export class PopAlertService implements OnDestroy {
     private showNext() {
         if (this.queue.length > 0) {
             let item = this.queue.splice(0, 1);
+            this.current = item[0];
             this.controlSub$.next(item[0]);
         }
     }
