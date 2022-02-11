@@ -5,6 +5,7 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
 import { map } from 'rxjs/operators';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
+import { OrderBy } from '../shared/orderby';
 
 @Component({
     selector: '[pager]',
@@ -198,10 +199,4 @@ export class PagerComponent implements OnInit, OnDestroy {
 export class Page {
     pageNumber: number;
     items: any[] = [];
-}
-
-export class OrderBy {
-    key: string;
-    direction: 'asc' | 'desc';
-    name: string;
 }

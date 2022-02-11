@@ -3,7 +3,9 @@
  */
 
 export * from './lib/alert/alert.module';
+export * from './lib/alert/alert.component';
 export * from './lib/lazy-ng-for/lazy-ng-for.module';
+export * from './lib/lazy-ng-for/lazy-ng-for.component';
 export * from './lib/lazy-ng-for/lazy-ng-for.service';
 export * from './lib/lazy-show/lazy-show.module';
 export * from './lib/lazy-show/lazy-show.service';
@@ -12,6 +14,7 @@ export * from './lib/loading/loading.module';
 export * from './lib/loading/loading.component';
 export * from './lib/loading/loading.service';
 export * from './lib/multiselect/multiselect.module';
+export * from './lib/multiselect/multiselect.component';
 export * from './lib/pager/pager.module'
 export * from './lib/pager/pager.component';
 export * from './lib/popalert/pop-alert.module';

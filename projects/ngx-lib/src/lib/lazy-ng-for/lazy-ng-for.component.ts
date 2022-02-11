@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef, NgZone, TrackByFunction } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
@@ -7,6 +7,7 @@ import { takeUntil, map, filter, debounceTime, distinct, pairwise } from 'rxjs/o
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/debounce';
 import { LazyNgForService } from './lazy-ng-for.service';
+import { OrderBy } from '../shared/orderby';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
     @Input() alertType: string;
     @Input() message: string;
     @Input() opts: LazyNgForOptions;
-    @Input() trackByFn: Function;
+    @Input() trackByFn: TrackByFunction<any>;
     private _items;
     get items() { return this._items }
     @Input() set items(value: any[]) {
@@ -203,10 +204,4 @@ export class LazyNgForComponent implements OnInit, OnDestroy {
 export class LazyNgForOptions {
     template?: any;
     itemSize?: number;
-}
-
-export class OrderBy {
-    key: string;
-    direction: 'asc' | 'desc';
-    name: string;
 }

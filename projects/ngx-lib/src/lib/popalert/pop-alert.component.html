@@ -37,8 +37,8 @@
                 <ng-container *ngTemplateOutlet="(opts?.template || defaultTemplate); context: getContext()"></ng-container>
             </div>
             <div *ngIf="opts?.showFooter" class="footer">
-                <a *ngIf="opts?.showCancelButton" href="javascript:void(0)" class="btn btn-warning" (click)="onCancelButtonClick()" [innerHTML]="opts?.cancelButtonText"></a>
-                <a href="javascript:void(0)" class="btn btn-primary" (click)="onOkButtonClick()" [innerHTML]="opts?.okButtonText"></a>
+                <button *ngIf="opts?.showCancelButton" [disabled]="!opts?.cancelButtonEnabled" class="btn btn-warning" (click)="onCancelButtonClick()">{{opts?.cancelButtonText}}</button>
+                <button [disabled]="!opts?.okButtonEnabled" class="btn btn-primary" (click)="onOkButtonClick()">{{opts?.okButtonText}}</button>
             </div>
         </div>
     </div>

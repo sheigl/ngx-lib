@@ -9,7 +9,9 @@ export class PopAlertOptions {
     showFooter?: boolean = true;
     onButtonClick?: () => void;
     okButtonText?: string = 'Ok';
+    okButtonEnabled?: boolean = true;
     cancelButtonText?: string = 'Cancel';
+    cancelButtonEnabled?: boolean = true;
     showCancelButton?: boolean = false;
     isError?: boolean = false;
     isModal?: boolean = false;
