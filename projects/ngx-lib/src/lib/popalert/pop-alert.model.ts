@@ -7,7 +7,7 @@ export class PopAlertOptions {
     showBody?: boolean = true;
     bodyText?: string = 'Your item has been saved.';
     showFooter?: boolean = true;
-    onButtonClick?: () => void;
+    onButtonClick?: () => Observable<boolean>;
     okButtonText?: string = 'Ok';
     okButtonEnabled?: boolean = true;
     cancelButtonText?: string = 'Cancel';

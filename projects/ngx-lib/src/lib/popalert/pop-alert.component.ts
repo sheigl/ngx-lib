@@ -82,9 +82,16 @@ export class PopAlertComponent implements OnInit, OnDestroy, AfterViewInit {
 
     onOkButtonClick() {
         if (this.opts.onButtonClick) {
-            this.opts.onButtonClick();            
-        }     
+            this.opts.onButtonClick()
+                .subscribe(this.finishOkClick);
+        }
+        else {
+            this.finishOkClick(true);
+        }
 
+    }
+
+    finishOkClick(shouldClose: boolean) {
         this.okButtonClicked = true;
         this.opts.showAlert = false;
         this.toggleBlur(false);
